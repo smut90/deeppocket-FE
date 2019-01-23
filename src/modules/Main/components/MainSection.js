@@ -4,6 +4,7 @@ import { faSearch, faShoppingCart, faAward, faTrophy, faLightbulb, faSpinner, fa
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { fetchNextDrawTime, fetchCurrentEdition, fetchTempBookedNumbersFromCache } from '../../effects';
 import '../../../style/bootstrap/css/bootstrap.min.css'
 import '../../../style/style.css'
@@ -99,6 +100,16 @@ export class MainSection extends React.Component {
 
         return (
             <div>
+                <Helmet>
+                    <title>Deep POCKET | Be Strategic, Be Patient, Be Lucky</title>
+                    <meta name="description" content="A Jackpot, Lottery site like no other. Best way to win amazing cash prices,
+                    Newest way to win small to large amounts on regular basis. Be Strategic, Be Patient, Be lucky. Search and win, start today" />
+                    <meta name="theme-color" content="#34495e" />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:title" content="Be Strategic, Be Patient, Be lucky. Search and win, start today" />
+                    <meta property="og:url" content="https://www.deeppocket99.com/" />
+                    <meta property="og:site_name" content="Deep Pocket" />
+                </Helmet>
                 <NavBar/>
                 {/*Main section Container*/}
                 <div classNameName="container-fluid">

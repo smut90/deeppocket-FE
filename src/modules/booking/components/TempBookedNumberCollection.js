@@ -142,12 +142,22 @@ export class TempBookedNumberCollection extends React.Component {
     };
 
     renderPaypalButton = () => {
-        const env = 'sandbox';
+        const env = process.env.REACT_APP_PAYPAL_ENV;
         const currency = 'USD';
         const singleNumberCost = 5;
+        const style = {
+                color: 'blue',      // 'gold, 'blue', 'silver', 'black'
+                size:  'medium',    // 'medium', 'small', 'large', 'responsive'
+                shape: 'rect',      // 'rect', 'pill'
+                tagline: false,
+                fundingicons: true,
+        };
+        const funding = {
+            allowed: [ 'paypal.FUNDING.CARD' ]
+        };
         const client = {
             sandbox: process.env.REACT_APP_PAYPAL_CLIENT_ID_SANDBOX,
-            production: process.env.PAYPAL_CLIENT_ID_PRODUCTION,
+            production: process.env.REACT_APP_PAYPAL_CLIENT_ID_PRODUCTION,
         };
 
         return (
@@ -160,6 +170,7 @@ export class TempBookedNumberCollection extends React.Component {
                 onError={this.paymentOnError}
                 onSuccess={this.paymentOnSuccess}
                 onCancel={this.paymentOnCancel}
+                style={style}
             />
         );
     };

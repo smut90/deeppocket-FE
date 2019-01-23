@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDataGrid from 'react-data-grid';
-import { Grid } from 'react-virtualized';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import swal from 'sweetalert2';
 import auth0Client from '../../auth/Auth';
 import SearchNumbers from './SearchNumbers';
@@ -580,6 +580,15 @@ export class NumberCollection extends React.Component {
 
         return (
             <div className="App">
+                <Helmet>
+                    <title>Search Dimes | Book Dimes | Win</title>
+                    <meta name="description" content="Start winning by booking dimes now. Book up to 10 dimes and be a winner. Best online Jackpot, Lottery site out there. Be Strategic, Be Patient and Be Lucky" />
+                    <meta name="theme-color" content="#34495e" />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:title" content="Start winning by booking dimes now. Book up to 10 dimes and be a winner. Best online Jackpot, Lottery site out there." />
+                    <meta property="og:url" content="https://www.deeppocket99.com/book" />
+                    <meta property="og:site_name" content="Deep Pocket" />
+                </Helmet>
 
                 <NavBar/>
                 <SearchNumbers />

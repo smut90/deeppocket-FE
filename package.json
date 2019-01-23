@@ -24,6 +24,7 @@
     "react-data-grid": "^5.0.4-2",
     "react-dom": "^16.6.0",
     "react-google-login": "^4.0.0",
+    "react-helmet": "^5.2.0",
     "react-paypal-express-checkout": "^1.0.5",
     "react-progressbar.js": "^0.2.0",
     "react-redux": "^5.1.0",

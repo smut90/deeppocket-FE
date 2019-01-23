@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { fetchUserBookedNumbers, fetchLastEditionWinningNumber, fetchPrevWinnersForDashboard, fetchNextDrawTime, fetchCurrentEdition, fetchTempBookedNumbersFromCache } from '../../effects';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faHandHoldingUsd, faUserAlt } from "@fortawesome/free-solid-svg-icons";
@@ -205,10 +206,46 @@ export class UserDashboard extends React.Component {
         );
     };
 
+    populateName = () => {
+        if (auth0Client.profile.given_name){
+            return (
+                <span>
+                    {auth0Client.profile.given_name} <strong style={{ 'color': '#cce5ff' }}>{auth0Client.profile.family_name}</strong>
+                </span>
+            );
+        } else {
+            return (
+                <span>
+                    <strong style={{ 'color': '#336e7b' }}>{auth0Client.profile.nickname}</strong>
+                </span>
+            );
+        }
+
+    };
+
+    populateHeaderName = () => {
+        console.log('PROFILE', auth0Client.profile.nickname);
+        if (auth0Client.profile && auth0Client.profile.given_name){
+            return auth0Client.profile.given_name + ' ' + auth0Client.profile.family_name;
+        } else {
+            return auth0Client.profile.nickname;
+        }
+
+    };
+
     render() {
         const { edition } = this.props;
         return (
             <div>
+                <Helmet>
+                    <title>{this.populateHeaderName()} | Dashboard </title>
+                    <meta name="description" content="Your dashboard, view your booked dimes and previous lucky winners" />
+                    <meta name="theme-color" content="#34495e" />
+                    <meta property="og:type" content="article" />
+                    <meta property="og:title" content="View our previous lucky winners" />
+                    <meta property="og:url" content="https://www.deeppocket99.com" />
+                    <meta property="og:site_name" content="Deep Pocket" />
+                </Helmet>
                 <NavBar/>
                 <div className="container-fluid" style={{ 'padding-right': '0px', 'padding-left': '0px' }}>
 
@@ -220,7 +257,11 @@ export class UserDashboard extends React.Component {
                                     <FontAwesomeIcon icon={faUserAlt} />
                                 </span>
                                 <span> </span>
-                                {auth0Client.profile.given_name} <strong style={{ 'color': '#cce5ff' }}>{auth0Client.profile.family_name}</strong>
+
+                                {
+                                    this.populateName()
+                                }
+
                             </h4>
                         </div>
                     </div>
